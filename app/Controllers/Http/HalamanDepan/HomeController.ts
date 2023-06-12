@@ -6,12 +6,12 @@ export default class HomeController {
   public async index({}: HttpContextContract) {
     const homeservice = new HomeService
 
-    return homeservice.cctvlist()
+    try {
+      return homeservice.cctvlist()
 
     } catch (error) {
       return []
     }
-
 
   }
 }
