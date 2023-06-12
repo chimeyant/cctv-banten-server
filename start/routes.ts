@@ -25,10 +25,8 @@ Route.get('/', async () => {
 })
 
 
-Route.get("sliders", "HalamanDepan/SlidersController.publish")
-Route.get("berita-kabupaten","HalamanDepan/BeritasController.index")
-Route.get("show-latest-video","HalamanDepan/VideosController.showLatestVideo")
-Route.get("show-video","HalamanDepan/VideosController.showVideos")
+Route.get("cctv-lists", "HalamanDepan/HomeController.index")
+
 
 Route.group(()=>{
   Route.group(()=>{
