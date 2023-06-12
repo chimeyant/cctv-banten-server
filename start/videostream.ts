@@ -2,7 +2,7 @@ import {VideoStream} from "App/Services/Video/VideoStraem"
 
 const streamer: VideoStream = new VideoStream({
   debug: true,
-  wsPort: 212,
+  wsPort: 9999,
   ffmpegPath: 'ffmpeg',
   ffmpegArgs: {
       '-b:v': '2048K',

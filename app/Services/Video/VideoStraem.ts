@@ -43,7 +43,9 @@ export class VideoStream extends EventEmitter {
     }
 
     public start(): void {
-        this.wsServer = new Server<WebSocketMeta>({ port: this.options?.wsPort || 9999, host: 'localhost' });
+      try {
+
+        this.wsServer = new Server<WebSocketMeta>({ port: this.options?.wsPort || 9999, host: '0.0.0.0' });
 
         this.wsServer.on('connection', (socket, request) => {
             if (!request.url) { return; }
@@ -120,6 +122,9 @@ export class VideoStream extends EventEmitter {
         });
 
         console.info('Video Stream server started!');
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     public stop(): void {
