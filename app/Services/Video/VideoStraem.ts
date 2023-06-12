@@ -43,7 +43,7 @@ export class VideoStream extends EventEmitter {
     }
 
     public start(): void {
-        this.wsServer = new Server<WebSocketMeta>({ port: this.options?.wsPort || 9999, host: '0.0.0.0' });
+        this.wsServer = new Server<WebSocketMeta>({ port: this.options?.wsPort || 9999, host: 'localhost' });
 
         this.wsServer.on('connection', (socket, request) => {
             if (!request.url) { return; }
