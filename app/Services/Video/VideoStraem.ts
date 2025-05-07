@@ -61,7 +61,7 @@ export class VideoStream extends EventEmitter {
 
         const newurl = new String(request.url);
 
-        const id = newurl.replace("/?id=", "");
+        const id = newurl.replace("/play?id=", "");
 
         console.log(id);
 
