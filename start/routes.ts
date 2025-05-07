@@ -25,6 +25,7 @@ Route.get("/", async () => {
 });
 
 Route.get("cctv-lists", "HalamanDepan/HomeController.index");
+Route.get("daftar-cctv", "Pemantauan/CctvsController.list");
 
 Route.group(() => {
   Route.group(() => {
@@ -116,5 +117,4 @@ Route.group(() => {
     .middleware(["auth"]);
 
   //dashboard pimpinan
-  Route.get("daftar-cctv", "Pemantauan/CctvsController.list");
 }).prefix("api");
