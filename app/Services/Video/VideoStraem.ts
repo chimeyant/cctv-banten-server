@@ -59,7 +59,9 @@ export class VideoStream extends EventEmitter {
 
         const newurl = new String(request.url);
 
-        const id = newurl.replace("/?play=", "");
+        const id = newurl.replace("/?id=", "");
+
+        console.log(id);
 
         const cctv = new CctvService();
 
