@@ -43,10 +43,10 @@ class CctvService {
     const records = await Area.query().preload("cctvs").orderBy("id", "asc");
 
     const datas: {}[] = [];
-    const cctvs: {}[] = [];
 
-    records.forEach((element) => {
+    records.forEach(async (element) => {
       const row = {};
+      const cctvs: {}[] = [];
       row["uuid"] = element.uuid;
       row["area"] = element.name;
       if (element.cctvs.length > 0) {
