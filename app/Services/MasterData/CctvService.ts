@@ -49,17 +49,20 @@ class CctvService {
       const row = {};
       row["uuid"] = element.uuid;
       row["area"] = element.name;
-      element.cctvs.forEach((item) => {
-        const cctv = {};
-        cctv["id"] = item.uuid;
-        cctv["name"] = item.name;
-        cctv["address"] = item.address;
-        cctv["position"] = {
-          lat: item.lat,
-          lng: item.lng,
-        };
-        cctvs.push(cctv);
-      });
+      if (element.cctvs.length > 0) {
+        element.cctvs.forEach((item) => {
+          const cctv = {};
+          cctv["id"] = item.uuid;
+          cctv["name"] = item.name;
+          cctv["address"] = item.address;
+          cctv["position"] = {
+            lat: item.lat,
+            lng: item.lng,
+          };
+          cctvs.push(cctv);
+        });
+      }
+
       row["cctvs"] = cctvs;
 
       datas.push(row);
