@@ -54,6 +54,10 @@ class CctvService {
         cctv["id"] = item.uuid;
         cctv["name"] = item.name;
         cctv["address"] = item.address;
+        cctv["position"] = {
+          lat: item.lat,
+          lng: item.lng,
+        };
         cctvs.push(cctv);
       });
       row["cctvs"] = cctvs;
