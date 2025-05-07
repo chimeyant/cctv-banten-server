@@ -1,52 +1,62 @@
-import { DateTime } from 'luxon'
-import {v4 as uuid} from "uuid"
-import { SoftDeletes } from '@ioc:Adonis/Addons/LucidSoftDeletes'
-import {compose} from "@ioc:Adonis/Core/Helpers"
-import { BaseModel, beforeCreate, column, computed } from '@ioc:Adonis/Lucid/Orm'
+import { DateTime } from "luxon";
+import { v4 as uuid } from "uuid";
+import { SoftDeletes } from "@ioc:Adonis/Addons/LucidSoftDeletes";
+import { compose } from "@ioc:Adonis/Core/Helpers";
+import {
+  BaseModel,
+  beforeCreate,
+  column,
+  computed,
+  HasMany,
+  hasMany,
+} from "@ioc:Adonis/Lucid/Orm";
+import Cctv from "./Cctv";
 
-export default class Area extends compose(BaseModel,SoftDeletes) {
+export default class Area extends compose(BaseModel, SoftDeletes) {
   @column({ isPrimary: true })
-  public id: number
+  public id: number;
 
   @column()
-  public uuid:string
+  public uuid: string;
 
   @column()
-  public name:string
+  public name: string;
 
   @column()
-  public description:string
+  public description: string;
 
   @column()
-  public deletedAt:DateTime
+  public deletedAt: DateTime;
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
+  public createdAt: DateTime;
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
+  public updatedAt: DateTime;
 
   @beforeCreate()
-  public static async createUUID(area:Area){
-    area.uuid = uuid()
+  public static async createUUID(area: Area) {
+    area.uuid = uuid();
   }
 
-  @computed()
-  public get display(){
-    return{
-      id:this.uuid,
-      name:this.name,
-      description: this.description
-    }
-  }
+  @hasMany(() => Cctv, { foreignKey: "areaUuid", localKey: "uuid" })
+  public cctvs: HasMany<typeof Cctv>;
 
   @computed()
-  public get record(){
+  public get display() {
     return {
-        id: this.uuid,
-        name: this.name,
-        description: this.description,
-    }
+      id: this.uuid,
+      name: this.name,
+      description: this.description,
+    };
+  }
+
+  @computed()
+  public get record() {
+    return {
+      id: this.uuid,
+      name: this.name,
+      description: this.description,
+    };
   }
 }
-

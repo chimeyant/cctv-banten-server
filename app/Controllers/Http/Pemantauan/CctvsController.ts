@@ -1,11 +1,16 @@
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import CctvService from 'App/Services/MasterData/CctvService'
+import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import CctvService from "App/Services/MasterData/CctvService";
 
 export default class CctvsController {
   public async index({}: HttpContextContract) {
-    const cctv = new CctvService
+    const cctv = new CctvService();
 
-    return cctv.lists()
+    return cctv.lists();
+  }
+
+  public async list({}: HttpContextContract) {
+    const cctv = new CctvService();
+    return cctv.cctvlist();
   }
 
   public async create({}: HttpContextContract) {}
