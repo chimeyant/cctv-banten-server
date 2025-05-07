@@ -57,6 +57,8 @@ export class VideoStream extends EventEmitter {
           return;
         }
 
+        console.log(request.url);
+
         const newurl = new String(request.url);
 
         const id = newurl.replace("/?id=", "");
