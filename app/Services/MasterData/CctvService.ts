@@ -29,10 +29,10 @@ class CctvService {
       row["area"] = element.area.name;
       row["name"] = element.name;
       row["address"] = element.address;
-      row["url"] = element.url;
       row["public_access"] = element.publicAccess
         ? { color: "green", text: "AKTIF" }
         : { color: "red", text: "TIDAK AKTIF" };
+      row["kondisi"] = element.status;
       datas.push(row);
     });
 
@@ -59,6 +59,7 @@ class CctvService {
             lat: item.lat,
             lng: item.lng,
           };
+          cctv["kondisi"] = item.status;
           cctvs.push(cctv);
         });
       }
