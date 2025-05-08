@@ -21,7 +21,6 @@ class HomeService {
         element.status +
         "</b>"),
         (row["icon"] = "/images/cctv-icon.png");
-      row["rstp"] = element.url;
       row["draggable"] = false;
       row["visible"] = true;
       row["size"] = [32, 32];
@@ -29,6 +28,7 @@ class HomeService {
         element.status == "baik"
           ? { color: "green", text: "Online" }
           : { color: "red", text: "Offline" };
+      row["kondisi"] = element.status;
       datas.push(row);
     });
 
