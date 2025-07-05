@@ -20,7 +20,6 @@ class CctvService {
   async lists() {
     const records = await Cctv.query()
       .preload("area")
-      .where("public_access", true)
       .orderBy("area_uuid", "asc");
 
     const datas: {}[] = [];
@@ -41,7 +40,9 @@ class CctvService {
   }
 
   async cctvlist() {
-    const records = await Area.query().preload("cctvs").where("public_access", true).orderBy("id", "asc");
+    const records = await Area.query()
+      .preload("cctvs", (query ) => query.where("public_access", true))
+      .orderBy("id", "asc");
 
     const datas: {}[] = [];
 
