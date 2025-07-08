@@ -2,7 +2,9 @@ import Cctv from "App/Models/MasterData/Cctv";
 
 class HomeService {
   async cctvlist() {
-    const model = await Cctv.query().orderBy("id", "asc");
+    const model = await Cctv.query()
+      .where("public_access", true)
+      .orderBy("id", "asc");
 
     const datas: {}[] = [];
 
